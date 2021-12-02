@@ -4,9 +4,11 @@ deploy:
   kubectl:
     manifests:
       - ./infra/k8s/*
-build:
+build:    
   local:
-    push: false
+    push: false 
+ # googleCloudBuild: 
+ #   projectId: ticketing-dev-333616  
   artifacts:
     - image: damian/auth
       context: auth

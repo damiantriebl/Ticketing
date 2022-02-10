@@ -1,14 +1,18 @@
-
+import buildClient from "./api/build-client";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <h1>Landing Page</h1>
 
-      <footer className={styles.footer}>
-        <h3>like a footer</h3>
-      </footer>
-    </div>
+const LandingPage = ({ currentUser }) => {
+  return currentUser ? (
+    <h1>You are signed in</h1>
+  ) : (
+    <h1>You are NOT signed in</h1>
   );
-}
+};
+LandingPage.getInitialProps = async (context) => {
+  console.log('sale el props!')
+  const client = buildClient(context);
+  const { data } = await client.get('/api/users/currentuser')
+  return data;
+};
+export default LandingPage;

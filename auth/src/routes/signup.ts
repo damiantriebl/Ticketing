@@ -1,15 +1,14 @@
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
 import jwt from 'jsonwebtoken'
-import { validateRequest } from "../middlewares/validate-request";
+import { validateRequest, BadRequestError, RequestValidationError } from "@uknproject/common";
 import { User } from "../models/users";
-import { BadRequestError } from "../errors/bad-request-error";
-import { RequestValidationError } from "../errors/request-validation-error";
+
 
 const router = express.Router();
 
 router.post(
-  "/api/users/signup",
+  '/api/users/signup',
   [
     body("email").isEmail().withMessage("Email must be valid"),
     body("password")
@@ -19,7 +18,7 @@ router.post(
   ],validateRequest,  
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
-
+    console.log('caimos aca');
     if (!errors.isEmpty()) {
       throw new RequestValidationError(errors.array());
     }
@@ -34,7 +33,6 @@ router.post(
       email,password
     })
     await user.save()
-    console.log(process.env.JWT_KEY!)
     // generate the jwt
     const userJwt = jwt.sign({
       id: user.id,

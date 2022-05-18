@@ -1,22 +1,29 @@
-# Installing tickecting microservices
+# ticketing
 
-For installing all the systen you need docker, kubernets and skaffold. If you have docker desktop only need habilitate the kubernets in configurations. 
-for skaffold you need https://skaffold.dev/
+projects of ticketing on microservices. follow the course of udemy
 
-when you install all the tools, you need to change the host file .
-in windows you need to change host located in 
+[Udemy](https://cognizant.udemy.com/course/microservices-with-node-js-and-react/learn/lecture/19102674#questions)
 
-    c:\Windows\System32\Drivers\etc\hosts
+## Installation
 
-put in the file
+you need to install previusly, npm, heml, kubectl y skaffold.
 
-    127.0.0.1 ticketing.dev/
-   this is important, you need to change this for point to endpoint on kubernets.
- one all configurated. you can use:
- 
+open the folder auth to install node modules. 
 
-    skaffold dev
-   with this you start a server with autoupdate. 
-if you like test, you can use inside the auth folder.
+`npm install`
 
-    npm run test
+install for local ingress-nginx
+
+`helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace`
+
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml`
+
+### Pre-flight check
+
+`kubectl get pods --namespace=ingress-nginx`
+
+if ok, you can use 
+
+`skaffold dev`
+
+

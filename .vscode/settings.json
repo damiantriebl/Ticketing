@@ -1,5 +1,8 @@
 {
     "yaml.schemas": {
-        "kubernetes://schema/v1%40service": "file:///c%3A/Users/damian.triebl/Desktop/RD/ticketing/infra/k8s/tickets-mongo-depl.yaml"
+        "kubernetes://schema/v1%40service": [
+            "file:///c%3A/Users/damian.triebl/Desktop/RD/ticketing/infra/k8s/tickets-mongo-depl.yaml"
+        ],
+        "kubernetes://schema/apps/v1%40deployment": "file:///d%3A/Next.js/ticketing/infra/k8s/auth-depl.yaml"
     }
 }

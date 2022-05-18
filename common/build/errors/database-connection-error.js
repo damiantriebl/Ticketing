@@ -20,9 +20,9 @@ var custom_error_1 = require("./custom-error");
 var DatabaseConnectionError = /** @class */ (function (_super) {
     __extends(DatabaseConnectionError, _super);
     function DatabaseConnectionError() {
-        var _this = _super.call(this, "Error connecting to db") || this;
+        var _this = _super.call(this, 'Error connecting to db') || this;
         _this.statusCode = 500;
-        _this.reason = "Error connecting to database";
+        _this.reason = 'Error connecting to database';
         Object.setPrototypeOf(_this, DatabaseConnectionError.prototype);
         return _this;
     }

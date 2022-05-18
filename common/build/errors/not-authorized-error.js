@@ -20,13 +20,13 @@ var custom_error_1 = require("./custom-error");
 var NotAuthorizedError = /** @class */ (function (_super) {
     __extends(NotAuthorizedError, _super);
     function NotAuthorizedError() {
-        var _this = _super.call(this, "Not Authorized") || this;
+        var _this = _super.call(this, 'Not Authorized') || this;
         _this.statusCode = 401;
         Object.setPrototypeOf(_this, NotAuthorizedError.prototype);
         return _this;
     }
     NotAuthorizedError.prototype.serializeErrors = function () {
-        return [{ message: "Not Authorized" }];
+        return [{ message: 'Not authorized' }];
     };
     return NotAuthorizedError;
 }(custom_error_1.CustomError));

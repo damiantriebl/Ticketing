@@ -20,7 +20,7 @@ var custom_error_1 = require("./custom-error");
 var RequestValidationError = /** @class */ (function (_super) {
     __extends(RequestValidationError, _super);
     function RequestValidationError(errors) {
-        var _this = _super.call(this, "Invalid request parameters") || this;
+        var _this = _super.call(this, 'Invalid request parameters') || this;
         _this.errors = errors;
         _this.statusCode = 400;
         // Only because we are extending a built in class

@@ -23,7 +23,6 @@ var BadRequestError = /** @class */ (function (_super) {
         var _this = _super.call(this, message) || this;
         _this.message = message;
         _this.statusCode = 400;
-        // Only because we are extending a built in class
         Object.setPrototypeOf(_this, BadRequestError.prototype);
         return _this;
     }

@@ -4,11 +4,9 @@ deploy:
   kubectl:
     manifests:
       - ./infra/k8s/*
-build:    
+build:
   local:
-    push: false 
- # googleCloudBuild: 
- #   projectId: ticketing-dev-333616  
+    push: false
   artifacts:
     - image: damian/auth
       context: auth
@@ -16,7 +14,7 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: "src/**/*.ts"
+          - src: 'src/**/*.ts'
             dest: .
     - image: damian/client
       context: client
@@ -24,7 +22,7 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: "**/*.js"
+          - src: '**/*.js'
             dest: .
     - image: damian/tickets
       context: tickets
@@ -32,5 +30,29 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: "src/**/*.ts"
-            dest: .        
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: damian/orders
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: damian/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: damian/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .

@@ -15,7 +15,9 @@ spec:
     spec:
       containers:
         - name: tickets-mongo
-          image: mongo  
+          image: mongo
+          imagePullPolicy: Never
+
 
 ---
 

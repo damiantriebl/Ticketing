@@ -3,7 +3,7 @@ import {app} from '../../app';
 import moongose from 'mongoose'
 
 it('Returns 404 if the tickets dont exist', async() => {
-    const id = moongose.Types.ObjectId().toHexString();
+    const id = new moongose.Types.ObjectId().toHexString();
     await request(app)
     .get(`/api/tickets/${id}`)
     .send()

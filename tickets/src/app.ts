@@ -18,10 +18,11 @@ app.use(
   })
 );
 app.use(currentUser);
-app.use(indexTicketRouter);
-app.use(updateTicketsRouter);
+
 app.use(createTicketRouter);
 app.use(showTicketRouter);
+app.use(indexTicketRouter);
+app.use(updateTicketsRouter);
 
 app.all('*', async (req, res) => {
   throw new NotFoundError();

@@ -1,0 +1,11 @@
+.navegacion {
+    background-color: #f4511e;
+    overflow: hidden;
+}
+.logo {
+    width: 5rem;
+    padding: 0.5rem;
+}
+.a {
+    color: blueviolet;
+}

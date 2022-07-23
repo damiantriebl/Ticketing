@@ -16,7 +16,6 @@ spec:
         - name: client
           image: damian/client
           imagePullPolicy: Never
-        
 ---
 apiVersion: v1
 kind: Service

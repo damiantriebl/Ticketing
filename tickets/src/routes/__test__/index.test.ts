@@ -1,7 +1,6 @@
 import request from 'supertest';
 import { app } from '../../app';
 
-
 const createTikect = () => {
     return request(app)
     .post('/api/tickets')

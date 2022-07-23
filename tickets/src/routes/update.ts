@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import {
+  BadRequestError,
   NotAuthorizedError,
   NotFoundError,
   requireAuth,
@@ -23,25 +24,31 @@ router.put(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const ticketRes = await Ticket.findById(req.params.id);
-    if (!ticketRes) {
+    const ticket = await Ticket.findById(req.params.id);
+    if (!ticket) {
       throw new NotFoundError();
     }
-    if (ticketRes.userId !== req.currentUser!.id) {
+
+    if(ticket.orderId){
+      throw new BadRequestError('Cannot update reserved Ticket');
+      
+    }
+    if (ticket.userId !== req.currentUser!.id) {
       throw new NotAuthorizedError();
     }
-    ticketRes.set({
+    ticket.set({
         title: req.body.title,
         price: req.body.price,
     })
-    await ticketRes.save();
+    await ticket.save();
     await new TicketUpdatedPublisher(natsWrapper.client).publish({
-      id: ticketRes.id,
-      title: ticketRes.title, 
-      price: ticketRes.price,
-      userId: ticketRes.userId
+      id: ticket.id,
+      title: ticket.title, 
+      price: ticket.price,
+      userId: ticket.userId,
+      version: ticket.version
     });
-    res.send(ticketRes);
+    res.send(ticket);
   }
 );
 

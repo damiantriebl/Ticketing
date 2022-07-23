@@ -3,7 +3,7 @@ import mongoose   from 'mongoose';
 
 
 const start = async () =>{
-  console.log('starting up...')
+  console.log('starting up... dev  version 2');
   if(!process.env.JWT_KEY){
     throw new Error('you need to specify the jwt secret')
   }

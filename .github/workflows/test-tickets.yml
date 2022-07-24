@@ -3,7 +3,7 @@ name: Test CI Tikets
 on:
   pull_request:
     paths:
-      -'tickets/**'
+      - 'tickets/**'
   
 jobs:
   build:

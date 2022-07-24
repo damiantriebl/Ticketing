@@ -9,7 +9,7 @@ import { indexTicketRouter } from './routes/index';
 import { updateTicketsRouter } from './routes/update';
 
 const app = express();
-console.log('try ci cd');
+console.log('try ci cd 2');
 app.set('trust proxy', true);
 app.use(json());
 app.use(
